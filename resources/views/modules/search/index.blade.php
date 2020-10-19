@@ -34,7 +34,9 @@
                                     <option value="{{ $term }}">{{ $term }}</option>
                                     @endforeach
                                 </select>
-                                <button type="submit">search</button>
+                                <input type="text" id="termtext" placeholder="Search term with text" class="search-term">
+                                <input type="text" id="contextsear" placeholder="Search context with text" class="search-term mt-2">
+                                <button type="submit" class="mt-2">search</button>
                             </form>
                         </div>
                     </div>
@@ -121,10 +123,12 @@
            var article = $('#article').val();
            var context = $('#context').val();
            var term = $('#term').val();
+           var termtext = $('#termtext').val();
+           var contextsear = $('#contextsear').val();
            $.ajax({
                url: '/advancedSearchp/',
                type: "GET",
-               data: {article:article, context:context, term:term},
+               data: {article:article, context:context, term:term, termtext:termtext, contextsear:contextsear},
                dataType: "json",
                success: function(data) {
                 console.log(data);

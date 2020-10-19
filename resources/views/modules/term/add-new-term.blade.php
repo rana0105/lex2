@@ -22,7 +22,9 @@
                                 <div class="first-row">
                                     <input type="text" name="esource" placeholder="Source">
                                 </div>
-                                <input type="text" name="enote" required="" placeholder="Note" class="note">
+                                <textarea name="enote" class="note" placeholder="Note"> 
+                                </textarea>
+                                {{-- <input type="text" name="enote" required="" placeholder="Note" class="note"> --}}
 
                                 <textarea id="eng-context-area" name="epara">  
                                 </textarea>
@@ -31,9 +33,11 @@
                             <div class="chinese-context">
                                 <h5>China</h5>
                                 <div class="first-row">
-                                    <input type="text" name="csource" required="" placeholder="Source">
+                                    <input type="text" name="csource" placeholder="Source">
                                 </div>
-                                <input type="text" name="cnote" placeholder="Note" class="note">
+                                <textarea name="enote" class="note" placeholder="Note"> 
+                                </textarea>
+                                {{--  class="inputheight"<input type="text" name="cnote" placeholder="Note" class="note"> --}}
 
                                 <textarea id="chi-context-area" name="cpara"> 
                                 </textarea>
@@ -44,11 +48,11 @@
                           <div class="row">
                             <div class="col-md-5">
                               <input type="text" name="eterms[]" data-role="tagsinput" value="">
-                              <input type="text" name="enotet[]" placeholder="Note" class="note mt-2">
+                              <input type="text" name="enotet[]" placeholder="Note" class="note mt-2 inputheight">
                             </div>
                             <div class="col-md-5">
                               <input type="text" name="cterms[]" data-role="tagsinput" value="">
-                              <input type="text" name="cnotet[]" placeholder="Note" class="note mt-2">
+                              <input type="text" name="cnotet[]" placeholder="Note" class="note mt-2 inputheight">
                             </div>
                             <a href="javascript:void(0)" id="rowadd" class="btn btn-sm btn-info mt-2">Add</a>
                           </div>
@@ -69,11 +73,11 @@
       var result = '<div class="row mt-2">'+
                 '<div class="col-md-5">'+
                 '<input type="text" name="eterms[]" data-role="tagsinput" value="">'+
-                '<input type="text" name="enotet[]" placeholder="Note" class="note mt-2">'+
+                '<input type="text" name="enotet[]" placeholder="Note" class="note mt-2 inputheight">'+
                 '</div>'+
                 '<div class="col-md-5">'+
                 '<input type="text" name="cterms[]" data-role="tagsinput" value="">'+
-                '<input type="text" name="cnotet[]" placeholder="Note" class="note mt-2">'+
+                '<input type="text" name="cnotet[]" placeholder="Note" class="note mt-2 inputheight">'+
                 '</div>'+
                 '<a href="javascript:void(0)" class="btn btn-sm btn-danger remove mt-2">Remove</a>'+
                 '</div>'
@@ -86,6 +90,11 @@
     });
   });
 </script>
+<style>
+  .inputheight {
+        height: 75px;
+  }
+</style>
 @endsection
 @section('script')
 

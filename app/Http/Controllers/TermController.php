@@ -105,9 +105,10 @@ class TermController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function termDetails($id)
     {
-        //
+        $detail = TermContext::with('temrengchi')->find($id);      
+        return view('modules.term.termDetails', compact('detail'));
     }
 
     /**
@@ -148,6 +149,6 @@ class TermController extends Controller
     public function deleteTerm($id)
     {
         $context = TermEngCha::find($id)->delete();
-        return response()->json('Ok');
+        return redirect()->route('term.index');
     }
 }

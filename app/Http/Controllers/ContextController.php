@@ -209,7 +209,7 @@ class ContextController extends Controller
     public function deleteContext($id)
     {
         $context = CotextParagraph::find($id)->delete();
-        return response()->json('Ok');
+        return redirect()->route('context.index');
     }
 
 

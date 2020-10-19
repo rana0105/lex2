@@ -48,7 +48,12 @@
                                                     {{-- <a href="#" class="context" data-id="{{$context}}" data-toggle="modal" data-target="#context-info-modal"><i class="material-icons">info</i> View more</a><br> --}}
                                                     <a href="{{ route('editcontext', $context->id) }}"><span class="material-icons">create</span> Edit</a><br>
                                                     <a href="{{ route('addTermContext', $context->id) }}" class="contextEditTerm"><span class="material-icons">note_add</span>Add Term</a><br>
-                                                    <a href="#" data-id="{{ $context->id }}" class="deleteContext"><i class="material-icons">close</i> Delete</a><br>
+                                                    {!! Form::open(['method' => 'POST','route' => ['deleteContext', $context->id],'style'=>'display:inline', 'class'=>'delete_form']) !!}
+                                                    <button class="admin-actionbtn delete-btn" type="submit">
+                                                       <i class="material-icons">close</i> Delete
+                                                    </button>
+                                                    {!! Form::close() !!}
+                                                    {{-- <a href="#" data-id="{{ $context->id }}" class="deleteContext"><i class="material-icons">close</i> Delete</a><br> --}}
                                                 </div>
                                             </div>
                                         </td>

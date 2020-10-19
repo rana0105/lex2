@@ -30,11 +30,12 @@
                                        @endforeach
                                     </select>
                                 </div>
-                                <input type="text" name="enote" required="" placeholder="Note" class="note">
+                                <textarea name="enote" class="note" placeholder="Note"> 
+                                </textarea>
+                                {{-- <input type="text" name="enote" required="" placeholder="Note" class="note"> --}}
 
                                 <textarea id="eng-context-area" name="epara">  
                                 </textarea>
-                                {{-- <input multiple data-role="tagsinput" placeholder="Terms" name="eterms" class="term-input"> --}}
                                 
                             </div>
                             <div class="chinese-context">
@@ -50,11 +51,12 @@
                                        @endforeach
                                     </select>
                                 </div>
-                                <input type="text" name="cnote" placeholder="Note" class="note">
+                                <textarea name="cnote" class="note" placeholder="Note"> 
+                                </textarea>
+                                {{-- <input type="text" name="cnote" placeholder="Note" class="note"> --}}
 
                                 <textarea id="chi-context-area" name="cpara"> 
                                 </textarea>
-                                {{-- <input multiple data-role="tagsinput" placeholder="Terms" name="cterms" class="term-input"> --}}
                                 
                             </div>
                             <hr>

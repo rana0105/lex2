@@ -26,18 +26,36 @@ class AdvnacedSearchController extends Controller
 
     public function advancedSearch(Request $request)
     {
+        $termt = $request->termtext;
+
+        $contextsear = $request->contextsear;
+
         $article = Article::where('article_code', $request->article)->first();
 
         $context = CotextParagraph::where('context_no', $request->context)->first();
 
+        $contexttt = CotextParagraph::where('eparagraph','LIKE','%'.$contextsear.'%')
+                                ->orWhere('cparagraph','LIKE','%'.$contextsear.'%')->first();
+
         $term = TermEngCha::where('term_no', $request->term)->first();
+        if (!empty($termt)) {
+            $termtext = TermEngCha::where('etermst','LIKE','%'.$termt.'%')
+                                ->orWhere('ctermst','LIKE','%'.$termt.'%')->first();
+        }else{
+            $termtext =  '';
+        }
+        
 
         $collection = collect($article);
         $alls =  $collection->merge($context);
         $col = collect($alls);
         $all = $col->merge($term);
+        $colss = collect($all);
+        $allsss = $colss->merge($contexttt);
+        $colsss = collect($allsss);
+        $al = $colsss->merge($termtext);
 
-        return response()->json($all);
+        return response()->json($al);
     }
 
     /**

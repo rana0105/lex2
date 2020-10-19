@@ -30,7 +30,7 @@ Route::get('/key-generate', function() {
 
 
 Route::get('/', function () {
-    return redirect()->route('context.index');
+    return redirect()->route('advancedsearch.index');
 });
 
 Auth::routes();
@@ -46,12 +46,14 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('contextlist', 'ContextController@index')->name('context.index');
     Route::get('context/create', 'ContextController@create')->name('context.create');
     Route::post('context/create', 'ContextController@store')->name('context.store');
-    Route::get('/deleteContext/{id}', 'ContextController@deleteContext');
+    //Route::get('/deleteContext/{id}', 'ContextController@deleteContext');
     Route::get('add-term/{id}', 'ContextController@addTermContext')->name('addTermContext');
     Route::post('addTerm', 'ContextController@addTerm')->name('addTerm');
     Route::get('editcontext/{id}', 'ContextController@editcontext')->name('editcontext');
     Route::post('editcontext', 'ContextController@posteditcontext')->name('posteditcontext');
     Route::get('viewmore/{id}', 'ContextController@viewmore')->name('viewmore');
+
+    Route::post('/deleteContext/{id}', 'ContextController@deleteContext')->name('deleteContext');
 
         //Article
     Route::get('articlelist', 'ArticleController@index')->name('article.index');
@@ -71,6 +73,8 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('edit-term/{id}', 'TermController@editTerm')->name('editTerm');
     Route::post('edit-term', 'TermController@updateTerm')->name('term.update');
     Route::get('/deleteTerm/{id}', 'TermController@deleteTerm');
+    Route::post('/deleteTerm/{id}', 'TermController@deleteTerm')->name('deleteTerm');
+    Route::get('/term-details/{id}', 'TermController@termDetails')->name('termDetails');
         //Search
     Route::get('advancedsearch', 'AdvnacedSearchController@index')->name('advancedsearch.index');
     Route::get('advancedSearchp', 'AdvnacedSearchController@advancedSearch');

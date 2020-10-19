@@ -42,8 +42,13 @@
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                     <a href="{{ route('editTerm', $termc->id) }}"><span class="material-icons">create</span> Edit</a><br>
-                                                    <a href="#" data-toggle="modal" data-target="#add-term-modal"><span class="material-icons">view_headline</span> Context</a><br>
-                                                     <a href="#" data-id="{{ $termc->id }}" class="deleteTerm"><i class="material-icons">close</i> Delete</a><br>
+                                                    <a href="{{ route('termDetails', $termc->id) }}"><span class="material-icons">view_headline</span>Details</a><br>
+                                                    {!! Form::open(['method' => 'POST','route' => ['deleteTerm', $termc->id],'style'=>'display:inline', 'class'=>'delete_form']) !!}
+                                                    <button class="admin-actionbtn delete-btn" type="submit">
+                                                       <i class="material-icons">close</i> Delete
+                                                    </button>
+                                                    {!! Form::close() !!}
+                                                     {{-- <a href="#" data-id="{{ $termc->id }}" class="deleteTerm"><i class="material-icons">close</i> Delete</a><br> --}}
                                                 </div>
                                             </div>
                                         </td>

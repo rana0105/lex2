@@ -26,7 +26,7 @@
 				<h1 style="text-align: center;">Lexenter</h1>
 				<!-- <form control="" action="context-list.php"> -->
                 <form method="POST" action="{{ route('login') }}">
-                        @csrf
+                        
 
                             <span><i class="material-icons md-18">face</i></span>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email" autofocus>
@@ -45,6 +45,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                @csrf
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>

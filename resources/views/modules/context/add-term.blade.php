@@ -22,14 +22,18 @@
                             <h5>English</h5>
                             <textarea class="form-control" readonly="">{!! strip_tags($context->eparagraph) !!}
                             </textarea><br>
-                            <input type="text" name="enote" placeholder="Term Note" class="note">
+                            <textarea name="enote" class="note" placeholder="Note"> 
+                                </textarea>
+                            {{-- <input type="text" name="enote" placeholder="Term Note" class="note"> --}}
                             
                         </div>
                         <div class="chinese-context">
                             <h5>China</h5>
                             <textarea class="form-control" readonly="">{!! strip_tags($context->cparagraph) !!}
                             </textarea><br>
-                            <input type="text" name="cnote" placeholder="Term note" class="note">
+                            <textarea name="cnote" class="note" placeholder="Note"> 
+                                </textarea>
+                            {{-- <input type="text" name="cnote" placeholder="Term note" class="note"> --}}
                             
                         </div>
                     </div>

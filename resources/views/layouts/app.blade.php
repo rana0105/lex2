@@ -22,6 +22,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/select2.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/tagsinput.css') }}">
+<link rel="stylesheet" href="https://wfolly.firebaseapp.com/node_modules/sweetalert/dist/sweetalert.css">
 <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
 </head>
@@ -46,10 +47,47 @@
 <script src="{{asset('assets/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('assets/js/select2.min.js')}}"></script>
 <script src="{{asset('assets/js/tagsinput.js')}}"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 <script src="https://cdn.tiny.cloud/1/qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc/tinymce/5.4.2-90/tinymce.min.js"></script>
 <script src="{{asset('assets/js/script.js')}}"></script>
 @stack('script')
 @yield("script")
+<script>
+	$('button.delete-btn').on('click', function(e){
+   e.preventDefault();
+   var self = $(this);
+   swal({
+       title             : "Are you sure?",
+       text              : "You will not be able to recover this!",
+       type              : "warning",
+       showCancelButton  : true,
+       confirmButtonColor: "#DD6B55",
+       confirmButtonText : "Yes, Delete it!",
+       cancelButtonText  : "No, Cancel delete!",
+       closeOnConfirm    : false,
+       closeOnCancel     : false
+   },
+   function(isConfirm){
+       if(isConfirm){
+           swal("Deleted!","It has been deleted", "success");
+           setTimeout(function() {
+               self.parents(".delete_form").submit();
+           }, 2000); //2 second delay (2000 milliseconds = 2 seconds)
+       }
+       else{
+             swal("Cancelled","It is safe", "error");
+       }
+   });
+});
+</script>
 </body>
 </html>
+
+
+
+{{-- {!! Form::open(['method' => 'DELETE','route' => ['childcategory.destroy', $childcategory->id],'style'=>'display:inline', 'class'=>'delete_form']) !!}
+                            <button class="admin-actionbtn delete-btn" type="submit">
+                                <i class="fas fa-trash-alt">
+                                </i>
+                            </button>
+                            {!! Form::close() !!} --}}
